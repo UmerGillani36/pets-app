@@ -22,7 +22,7 @@ const Inventory = () => {
   const [data, setData] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
-  const [id, setId]=useState(1);
+  const [id, setId]=useState(0);
 
   function fetchPets(){
     setIsLoaded(true);
@@ -66,13 +66,13 @@ const handleAddPet=()=>{
 alert('Please Fill correct information')
   }
 }
-const handleEdit=(value)=>{
+const handleEdit=(id)=>{
   setIsEdit(true);
-  let temp=data.filter((item)=>item.id===value);
+  let temp=data.filter((item)=>item.id===id);
   if(temp.length>0){
 
     const {id,animal,description,price,age} = temp[0]
-    setName(id);
+    setId(id);
     setName(animal);
     setDescription(description);
     setAge(age);
@@ -82,8 +82,13 @@ const handleEdit=(value)=>{
   }
 
 }
-const handleDelete=()=>{
-
+const handleDelete=(id)=>{
+  fetch(`http://localhost:3001/api?act=delete&id=${id}`)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          fetchPets();
+        })    
 }
 const clearState=()=>{
   setAge("");
@@ -91,6 +96,7 @@ const clearState=()=>{
   setDescription("");
   setPrice("");
   setIsEdit(false)
+  setId(0);
 }
   return (
     <div>
@@ -134,7 +140,7 @@ const clearState=()=>{
               <TableCell align="right">{row.description}</TableCell>
               <TableCell align="right">{row.age}</TableCell>
               <TableCell align="right">{row.price}</TableCell>
-              <TableCell align="right"><DeleteIcon style={{cursor:'pointer'}} onClick={handleDelete}/></TableCell>
+              <TableCell align="right"><DeleteIcon style={{cursor:'pointer'}} onClick={()=>handleDelete(index+1)}/></TableCell>
               <TableCell align="right" ><EditIcon style={{cursor:'pointer'}} onClick={()=>handleEdit(index+1)}/></TableCell>
             </TableRow>
           ))}
