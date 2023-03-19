@@ -1,0 +1,22 @@
+.MainHomeContainer{
+    width: 100%;
+    height: 100vh;
+    background-image: url('../../Images/eight.jpg');
+    /* background-repeat: contain; */
+    background-repeat: no-repeat;
+    background-position:  right top;
+    background-size: cover;
+    /* background-size:unset; */
+}
+.quote{
+    width: 800px;
+    position: absolute;
+    color: white;
+    background-color: rgba(0,0,0,0.5);
+    font-size: 40px;
+    font-weight: bold;
+    top: 100px;
+    left: 30px;
+    padding: 20px;
+    border-radius: 6px;
+}

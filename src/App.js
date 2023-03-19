@@ -146,16 +146,12 @@ function App() {
   return (
     <>
     <BrowserRouter>
-    <div>
-    <NavBar />
-    </div>
     <Routes>
-      <Route   path='/'  element={<Home />}>
+      <Route  path='/' element={<Home />}/>
         <Route  path="inventory" element={<Inventory />} />
         <Route  path="search" element={<Search />} />
         <Route  path="about" element={<About />} />
         <Route path="*" element={<NoPage />} />
-      </Route>
     </Routes>
     </BrowserRouter>
     </>

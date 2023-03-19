@@ -1,0 +1,15 @@
+.MainContentWrapper{
+width: 100%;
+height: 100%;
+display: flex;
+justify-content:flex-start;
+align-items: center;
+padding: 30px;
+box-sizing: border-box;
+}
+.MainContent{
+margin: 0;
+font-size: 18px;
+word-spacing: 6px;
+font-weight: 500;
+}
